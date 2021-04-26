@@ -3,17 +3,17 @@ declare(strict_types=1);
 
 namespace TimoBakx\ApiEventsBundle\Events\BeforeRead;
 
-use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use TimoBakx\ApiEventsBundle\ApiPlatformListeners\BeforeRead;
 use TimoBakx\ApiEventsBundle\Events\RequestParser;
 
 final class Listener implements BeforeRead
 {
     private RequestParser $requestParser;
-    private EventDispatcher $dispatcher;
+    private EventDispatcherInterface $dispatcher;
 
-    public function __construct(RequestParser $requestParser, EventDispatcher $dispatcher)
+    public function __construct(RequestParser $requestParser, EventDispatcherInterface $dispatcher)
     {
         $this->requestParser = $requestParser;
         $this->dispatcher = $dispatcher;
