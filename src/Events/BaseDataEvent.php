@@ -10,7 +10,10 @@ abstract class BaseDataEvent extends BaseEvent
      */
     private $data;
 
-    public function __construct(string $resourceClass, string $operationType, string $operationName, $data = null)
+    /**
+     * @param mixed|null $data
+     */
+    public function __construct(string $resourceClass, string $operationType, string $operationName, $data)
     {
         parent::__construct($resourceClass, $operationType, $operationName);
 
