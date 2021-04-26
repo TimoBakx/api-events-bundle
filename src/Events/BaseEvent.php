@@ -28,15 +28,25 @@ abstract class BaseEvent extends SymfonyEvent implements Event
         return $this->resourceClass === $resourceClass;
     }
 
+    public function isACollectionOperation(): bool
+    {
+        return $this->operationType === self::OPERATION_TYPE_COLLECTION;
+    }
+
     public function isCollectionOperation(string $operationName): bool
     {
-        return $this->operationType === self::OPERATION_TYPE_COLLECTION
+        return $this->isACollectionOperation()
             && $this->operationName = $operationName;
+    }
+
+    public function isAnItemOperation(): bool
+    {
+        return $this->operationType === self::OPERATION_TYPE_ITEM;
     }
 
     public function isItemOperation(string $operationName): bool
     {
-        return $this->operationType === self::OPERATION_TYPE_ITEM
+        return $this->isAnItemOperation()
             && $this->operationName === $operationName;
     }
 
