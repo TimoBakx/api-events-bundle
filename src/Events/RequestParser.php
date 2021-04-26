@@ -10,6 +10,7 @@ final class RequestParser
     private const COLLECTION_OPERATION = '_api_collection_operation_name';
     private const ITEM_OPERATION = '_api_item_operation_name';
     private const RESOURCE_CLASS = '_api_resource_class';
+    private const DATA = 'data';
 
     public function isApiRequest(Request $request): bool
     {
@@ -64,5 +65,17 @@ final class RequestParser
         }
 
         return $request->attributes->get(self::RESOURCE_CLASS);
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getData(Request $request)
+    {
+        if (!$request->attributes->has(self::DATA)) {
+            return null;
+        }
+
+        return $request->attributes->get(self::DATA);
     }
 }
