@@ -3,17 +3,15 @@ declare(strict_types=1);
 
 namespace TimoBakx\ApiEventsBundle\ApiPlatformListeners;
 
-use ApiPlatform\Core\EventListener\EventPriorities;
+use ApiPlatform\Symfony\EventListener\EventPriorities;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 final class Registrator
 {
-    private ContainerBuilder $container;
-
-    public function __construct(ContainerBuilder $container)
-    {
-        $this->container = $container;
+    public function __construct(
+        private readonly ContainerBuilder $container,
+    ) {
     }
 
     public function addListeners(): void
